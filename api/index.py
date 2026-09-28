@@ -1,0 +1,1 @@
+from sentinel_server import app
