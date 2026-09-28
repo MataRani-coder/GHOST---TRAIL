@@ -3,7 +3,7 @@ from fastapi import FastAPI
 app = FastAPI(title="Ghost Trail API")
 
 
-@app.get("/")
+@app.get("/api")
 def root():
     return {
         "status": "online",
@@ -11,7 +11,7 @@ def root():
     }
 
 
-@app.get("/health")
+@app.get("/api/health")
 def health():
     return {
         "status": "healthy"
