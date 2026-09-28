@@ -2,6 +2,10 @@ import soundManager from './audioAlert';
 
 // Use current page host for WebSocket (Vite proxies /api/ws → port 8765)
 const getWsUrl = () => {
+  if (import.meta.env.VITE_WS_URL) {
+    return import.meta.env.VITE_WS_URL;
+  }
+
   const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
   return `${protocol}//${window.location.host}/api/ws`;
 };

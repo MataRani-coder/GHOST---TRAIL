@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Use relative /api so it works both in the .exe (served by FastAPI)
 // and in dev mode (Vite proxies /api → http://127.0.0.1:8765)
-const BASE_URL = '/api';
+const BASE_URL = 'https://ghost-trail-de29-lgoauoz1x-zero-index1.vercel.app/api';
 
 const api = axios.create({
   baseURL: BASE_URL,
