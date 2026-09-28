@@ -1,0 +1,78 @@
+alerts:
+  cooldown_sec: 30.0
+  display_duration_sec: 30.0
+# Ghost Trail behavior-anomaly thresholds. Kept short (seconds) for a live
+# demo; raise these for real deployment (e.g. minutes instead of seconds).
+behavior:
+  watch_dwell_sec: 8.0        # in view this long -> Watch tier
+  suspicious_dwell_sec: 20.0  # -> Suspicious tier, escalates to face recognition
+  high_risk_dwell_sec: 45.0   # -> High Risk tier
+  off_hours_start: 22         # 22:00 - 06:00 counts as off-hours (bumps tier up)
+  off_hours_end: 6
+  reentry_high_risk: 3        # this many repeat passes -> High Risk
+  zone_hop_window_sec: 90.0   # rolling window for cross-camera zone-hopping
+cameras:
+- camera_id: cam_1
+  enabled: true
+  source: 0
+database:
+  db_path: tracker.db
+face_recognition:
+  det_size:
+  - 320
+  - 320
+  device: cpu
+  face_threshold: 0.45
+  model_name: buffalo_l
+model:
+  classes:
+  - 0
+  - 2
+  - 24
+  conf_thres: 0.4
+  device: cpu
+  imgsz: 480
+  iou_thres: 0.45
+  weights: yolov8n.pt
+reid:
+  body_guest_threshold: 0.50
+  body_registered_threshold: 0.72
+  confirm_frames: 5
+  device: cpu
+  enabled: true
+  input_size:
+  - 256
+  - 128
+  max_gallery_size: 2000
+  max_time_gap_sec: 30.0
+  guest_handoff_grace_sec: 0.75
+  guest_face_threshold: 0.55
+  registered_face_stitch_threshold: 0.60
+  camera_handoff_max_gap_sec: 8.0
+  micro_batch_max_size: 64
+  micro_batch_max_wait_ms: 15.0
+  min_box_area: 1200
+  model_name: osnet_x1_0
+  person_class_id: 0
+  reid_interval: 3
+  reid_model_weights: ''
+stream:
+  queue_size: 2
+  reconnect_interval_sec: 2.0
+  target_fps: 20
+threat_alert_cooldown_sec: 1.0
+threat_classes:
+- 2
+tracker:
+  frame_rate: 30
+  lost_track_buffer: 40
+  minimum_matching_threshold: 0.8
+  track_activation_threshold: 0.3
+ui:
+  max_view_width: 640
+  offline_tile_size:
+  - 640
+  - 360
+  show_face_score: true
+  show_fps: true
+  window_name: "Ghost Trail - Perimeter Defense"

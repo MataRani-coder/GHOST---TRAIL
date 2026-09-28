@@ -1,0 +1,39 @@
+# Python files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+ENV/
+env/
+
+# Deep learning weights & models
+*.pt
+*.pth
+*.onnx
+model/
+
+# Databases & logs
+*.db
+*.sqlite
+*.log
+.system_generated/
+scratch/
+
+# Node dependencies & UI builds
+node_modules/
+dist/
+build/
+.eslintcache
+
+# System & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Agent runtime files
+.gemini/
+.antigravity/
+brain/

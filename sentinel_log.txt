@@ -1,0 +1,11 @@
+[19:05:06] ==================================================
+[19:05:06] Ghost Trail starting up
+[19:05:07] Control window displayed
+[19:05:07] [INFO] Building updated React dashboard...
+[19:05:09] [INFO] Dashboard build complete.
+[19:05:10] FastAPI server thread started
+[19:05:10] AI tracker thread started
+[19:05:10] Waiting for server...
+[19:05:10] Server is ready!
+[19:05:10] Opening browser at http://127.0.0.1:8765
+[19:05:11] Control window running (main loop)
