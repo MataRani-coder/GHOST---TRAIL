@@ -99,11 +99,11 @@ export const Layout = ({ children }) => {
   ];
 
   return (
-    <div className="sentinel-shell min-h-screen w-full select-none">
+    <div className="sentinel-shell min-h-screen w-full">
       <header className="sentinel-topnav">
         <Link to="/dashboard" className="sentinel-logo">Ghost <span>Trail</span></Link>
 
-        <nav className={`sentinel-nav ${mobileMenu ? 'open' : ''}`}>
+        <nav aria-label="Primary navigation" className={`sentinel-nav ${mobileMenu ? 'open' : ''}`}>
           {navItems.map(item => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path || (item.path === '/dashboard' && location.pathname === '/');
@@ -148,7 +148,7 @@ export const Layout = ({ children }) => {
           <button className="yellow-button compact" onClick={() => { setEnrollInitialBlob(null); setIsEnrollOpen(true); }}>
             <UserPlus size={15} /> Add person
           </button>
-          <button className="mobile-menu-btn" onClick={() => setMobileMenu(v => !v)}><Menu size={21} /></button>
+          <button className="mobile-menu-btn" onClick={() => setMobileMenu(v => !v)} aria-label={mobileMenu ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={mobileMenu}><Menu size={21} /></button>
         </div>
       </header>
 

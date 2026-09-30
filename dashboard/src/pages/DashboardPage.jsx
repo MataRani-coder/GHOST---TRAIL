@@ -44,11 +44,11 @@ export const DashboardPage = () => {
   const navigate = useNavigate();
   const [cameras, setCameras] = useState([]);
   const [summary, setSummary] = useState({
-    activeCameras: 3,
-    totalDetections: 48,
-    activeAlerts: 1,
-    systemHealth: 99.4,
-    fps: 29.4
+    activeCameras: 0,
+    totalDetections: 0,
+    activeAlerts: 0,
+    systemHealth: 0,
+    fps: 0
   });
   const [layoutMode, setLayoutMode] = useState('grid2x2'); // 'grid2x2', 'focus', 'director'
   const [focusedCameraId, setFocusedCameraId] = useState(null);
@@ -249,7 +249,7 @@ export const DashboardPage = () => {
             }}
           >
             <div className="hero-device">
-              <div className="device-topbar"><span className="device-brand">Ghost <span>Trail</span></span><div className="device-tabs"><b>LIVE</b><span>TRACKING</span><span>ALERTS</span><span>ANALYTICS</span></div><span className="device-status"><i /> {summary.activeCameras || 3} CAMERAS</span></div>
+              <div className="device-topbar"><span className="device-brand">Ghost <span>Trail</span></span><div className="device-tabs"><b>LIVE</b><span>TRACKING</span><span>ALERTS</span><span>ANALYTICS</span></div><span className="device-status"><i /> {summary.activeCameras ?? 0} CAMERAS</span></div>
               <div className="device-body">
                 <div className="device-cams">
                   {['CAM 01','CAM 02','CAM 03','CAM 04'].map((cam, i) => <div className={`device-cam ${i === 0 ? 'selected' : ''}`} key={cam}><span className="cam-thumb" /><span>{cam}</span><small>{['Main Gate','Lobby','Parking','Corridor'][i]}</small></div>)}
@@ -259,7 +259,7 @@ export const DashboardPage = () => {
                   <div className="feed-scene"><div className="scan-grid" /><div className="person person-one"><span>ID: 042</span></div><div className="person person-two"><span>ID: 015</span></div><div className="feed-crosshair" /></div>
                 </div>
               </div>
-              <div className="device-metrics"><span><b>{summary.totalDetections || 48}</b> People tracked</span><span><b>{summary.activeAlerts || 1}</b> Active alerts</span><span><b>{summary.fps || 29.4}</b> FPS</span></div>
+              <div className="device-metrics"><span><b>{summary.totalDetections ?? 0}</b> People tracked</span><span><b>{summary.activeAlerts ?? 0}</b> Active alerts</span><span><b>{summary.fps ?? 0}</b> FPS</span></div>
             </div>
           </div>
 
@@ -307,10 +307,10 @@ export const DashboardPage = () => {
             <button className="hero-secondary" onClick={() => setLayoutMode('focus')}>Watch live <span>▶</span></button>
           </div>
           <div className="hero-mini-stats">
-            <div><strong>{summary.activeCameras || 3}</strong><span>Cameras online</span></div>
-            <div><strong>{summary.totalDetections || 48}</strong><span>People tracked</span></div>
-            <div><strong>{summary.activeAlerts || 1}</strong><span>Active alerts</span></div>
-            <div><strong>{summary.fps || 29.4}</strong><span>FPS</span></div>
+            <div><strong>{summary.activeCameras ?? 0}</strong><span>Cameras online</span></div>
+            <div><strong>{summary.totalDetections ?? 0}</strong><span>People tracked</span></div>
+            <div><strong>{summary.activeAlerts ?? 0}</strong><span>Active alerts</span></div>
+            <div><strong>{summary.fps ?? 0}</strong><span>FPS</span></div>
           </div>
         </div>
       </section>
@@ -335,7 +335,7 @@ export const DashboardPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <MetricCard
           label="Cameras online"
-          value={`${summary.activeCameras || 3} / ${cameras.length || 4}`}
+          value={`${summary.activeCameras ?? 0} / ${cameras.length || 4}`}
           sub="Live channels"
           icon={Camera}
           accent="text-cyan-400 bg-cyan-950/40 border-cyan-500/30"
@@ -344,7 +344,7 @@ export const DashboardPage = () => {
 
         <MetricCard
           label="People detected"
-          value={summary.totalDetections || 48}
+          value={summary.totalDetections ?? 0}
           sub="Tracks recorded"
           icon={Activity}
           accent="text-emerald-400 bg-emerald-950/40 border-emerald-500/30"
@@ -353,7 +353,7 @@ export const DashboardPage = () => {
 
         <MetricCard
           label="Active alerts"
-          value={summary.activeAlerts || 1}
+          value={summary.activeAlerts ?? 0}
           sub="Needs attention"
           icon={AlertTriangle}
           accent="text-rose-400 bg-rose-950/40 border-rose-500/30"
@@ -362,7 +362,7 @@ export const DashboardPage = () => {
 
         <MetricCard
           label="AI performance"
-          value={`${summary.fps || 29.4} FPS`}
+          value={`${summary.fps ?? 0} FPS`}
           sub="Real-time inference"
           icon={Cpu}
           accent="text-amber-400 bg-amber-950/40 border-amber-500/30"

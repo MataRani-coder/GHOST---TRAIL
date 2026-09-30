@@ -551,6 +551,24 @@
 .hero-mini-stats span { color:#536a7b; font-size:7px; letter-spacing:.12em; text-transform:uppercase; }
 
 @keyframes liveBlink { 0%,100% { opacity:1; } 50% { opacity:.28; } }
+
+/* Keyboard-ready interaction states for demos and judging. */
+:where(button, a, input, select, textarea):focus-visible {
+  outline: 2px solid #9dd8ff;
+  outline-offset: 3px;
+}
+.sentinel-topnav button:focus-visible,
+.sentinel-topnav a:focus-visible { outline-offset: 5px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+  .ghost-telemetry-track { animation: none !important; }
+}
 @keyframes fadeInPage { from { opacity:0; transform:translateY(7px); } to { opacity:1; transform:translateY(0); } }
 .fade-in-transition { animation:fadeInPage .34s cubic-bezier(.22,1,.36,1) forwards; }
 
